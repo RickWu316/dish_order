@@ -1,0 +1,6 @@
+.col-4, .col-8 {
+  /* outline: 1px solid steelblue; */
+  border:1px solid steelblue ;
+  min-height: 600px;
+}
+
