@@ -4,5 +4,6 @@ const foodController = require('../controllers/foodController.js')
 
 // root
 router.get('/', foodController.getfoods)
+router.post('/order', foodController.postOrder)
 
 module.exports = router

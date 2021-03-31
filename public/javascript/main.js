@@ -1,4 +1,4 @@
-const { getfoods } = require('../../controllers/foodController')
+
 const { foods } = require('../../models')
 
 
@@ -14,7 +14,10 @@ const public = {
             return food
         }).catch(error => console.error(error))
 
-    }
+    },
+
+
+
 
 }
 

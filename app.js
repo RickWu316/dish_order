@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3000
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json({ limit: '50mb' }))
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
