@@ -3,7 +3,7 @@ const { foods } = require('../../models')
 
 
 const public = {
-    getfoods: async (sort) => {
+    getFoods: async (sort) => {
         return foods.findAll({
             raw: true,
             nest: true

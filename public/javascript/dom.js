@@ -1,6 +1,7 @@
 const leftDeck = document.querySelector(".card-deck")
 const rightOrder = document.querySelector("#order")
 let orderItem = []
+let amount = 0
 
 // console.log(foodList)
 
@@ -43,7 +44,7 @@ function addToOrder(target) {
         foodId = selectFood.children[0].id
         qty = Number(selectFood.children[3].children[1].innerText)
         const targetOrderItem = orderItem.find(item => item.id === foodId)
-        let amount = 0
+
 
         if (targetOrderItem) {
             targetOrderItem.quantity += qty
@@ -94,7 +95,7 @@ function postOrder(target) {
         var oReq = new XMLHttpRequest();
         oReq.open("POST", "/order", true);
         oReq.setRequestHeader("Content-Type", "application/json");
-        let data = JSON.stringify(orderItem)
+        let data = JSON.stringify({ orderItem, amount })
         oReq.send(data)
     }
 }

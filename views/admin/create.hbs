@@ -1,0 +1,45 @@
+<div class="container mt-5">
+
+    <div class="head justify-content-between ">
+        {{#if food}}
+        <form class="d-flex justify-content-center" action="/admin/foods/{{food.id}}?_method=PUT" method="POST"
+            enctype="multipart/form-data">
+            {{else}}
+            <form class="d-flex justify-content-center" action="/admin/foods" method="POST"
+                enctype="multipart/form-data">
+                {{/if }}
+                <div class="col-12">
+                    <div class="form-label-group">
+                        <label for="inputName">名稱</label>
+                        <input type="text" name="name" class="form-control" placeholder="
+              {{food.name}}" value="{{food.name}}" required autofocus>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="inputImage">圖片</label>
+                        <img src={{food.image}} alt="">
+                        <input type="file" class="form-control-file" id="image" name="image">
+                        {{!-- <input type="string" name="image" class="form-control" placeholder="
+              {{food.image}}" value="{{food.image}}"> --}}
+                    </div>
+                    <div class="form-label-group">
+                        <label for="inputDescription">描述</label>
+                        <input type="text" name="description" class="form-control" placeholder="{{food.description}}
+                  " value="{{food.description}}">
+                    </div>
+                    <div class="form-label-group">
+                        <label for="inputPrice">價格</label>
+                        <input type="number" name="price" class="form-control" value="{{food.price}}"
+                            placeholder="{{food.price}}" required>
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn"
+                        style="background: #FF6600; min-width:33%;width:170px; border-radius: 30px 30px 30px 30px">
+                        <span style="color: #FFFFFF;">儲存</span>
+                    </button>
+                    </br>
+                </div>
+            </form>
+    </div>
+
+</div>
