@@ -120,8 +120,6 @@ function postOrder(target) {
             alert(`你是${data.id}號`)
         }
 
-
-
         function updateProgress(oEvent) {
             if (oEvent.lengthComputable) {
                 var percentComplete = oEvent.loaded / oEvent.total;

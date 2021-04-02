@@ -59,12 +59,22 @@ const adminController = {
     deleteFood: async (req, res) => {
         let id = req.params.id
         const food = await Foods.findByPk(id)
-        food.destroy()
+        await food.destroy()
         res.redirect('./')
     },
 
     getOrders: async (req, res) => {
+        // const status = req.query.status
+        let status = 0
+        if (req.query.status) {
+            status = req.query.status
+            console.log(status)
+        }
+        // if (!status) { status = 0 }
+        // console.log(status)
+
         const orderList = await Orders.findAll({
+            where: { status },
             include: [{
                 model: OrderItems,
                 include: [Foods]
@@ -76,10 +86,17 @@ const adminController = {
             "createdTime": moment(item.dataValues.createdAt).format("YYYY-MM-DD HH:mm:ss"),
             "updatedTime": moment(item.dataValues.updatedAt).format("YYYY-MM-DD HH:mm:ss")
         }))
-        console.log(orders)
-
-        // console.log(orders[0].OrderItems)
+        // console.log(typeof orders[0].id)
         res.render("admin/orders", { orders })
+
+    },
+    putOrder: async (req, res) => {
+        let id = req.params.id
+        let status = req.body.status
+        let order = await Orders.findByPk(id)
+
+        await order.update({ status })
+        res.redirect("back")
 
     }
 

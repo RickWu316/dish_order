@@ -16,6 +16,7 @@ router.delete('/admin/foods/:id', adminController.deleteFood)
 router.post('/admin/foods', upload.single('image'), adminController.postFood)
 router.get('/admin/foods', adminController.getFoods)
 
+router.put('/admin/orders/:id', adminController.putOrder)
 router.get('/admin/orders', adminController.getOrders)
 
 

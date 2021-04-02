@@ -4,13 +4,13 @@
     <div class="nav">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link active" href="?categoryId=">全部</a>
+                <a class="nav-link active" href="./orders">全部</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?categoryId=">已結單</a>
+                <a class="nav-link" href="?status=已結單">已結單</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?categoryId=">未出單</a>
+                <a class="nav-link" href="?status=已接單">未出單</a>
             </li>
         </ul>
     </div>
@@ -33,15 +33,16 @@
                 {{!-- <div>數量:</div> --}}
                 {{/each}}
             </div>
-            {{!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p> --}}
-            {{!-- <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a> --}}
+            <div class="status d-flex justify-content-center">
+                <form action="/admin/orders/{{this.id}}?_method=PUT" method="POST">
+                    <button type=" submit" class="btn btn-outline-primary mr-1" name="status" value="已完成">已完成</button>
+                    <button class="btn btn-outline-primary mr-1" name="status" value="已結單">結單</button>
+                    <button class="btn btn-outline-primary mr-1" name="status" value="取消">取消</button>
+                </form>
+            </div>
         </div>
     </div>
     {{/each}}
-
 
 
 </div>
