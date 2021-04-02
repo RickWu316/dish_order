@@ -1,10 +1,10 @@
 
-const { foods } = require('../../models')
+const { Foods } = require('../../models')
 
 
 const public = {
     getFoods: async (sort) => {
-        return foods.findAll({
+        return Foods.findAll({
             raw: true,
             nest: true
 

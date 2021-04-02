@@ -1,0 +1,47 @@
+<div class="container mt-5">
+
+
+    <div class="nav">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="?categoryId=">全部</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?categoryId=">已結單</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?categoryId=">未出單</a>
+            </li>
+        </ul>
+    </div>
+
+    {{#each orders}}
+    <div class="card m-2" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="card-title text-ce">單號:{{this.id}}</h5>
+            <h6 class="card-item">名稱:{{this.name}}</h6>
+            <h6 class="card-item">電話:{{this.phone}}</h6>
+            <h6 class="card-item">金額:${{this.amount}} 元</h6>
+            <h6 class="card-item">打單時間:{{this.createdTime}}</h6>
+            <h6 class="card-item">修改時間:{{this.updatedTime}}</h6>
+            <h6 class="card-item">狀態:{{this.status}}</h6>
+            {{!-- <h6 class="card-subtitle mb-2 text-muted">{{this.id}}</h6> --}}
+            {{!-- <div>{{this.OrderItems}}</div> --}}
+            <div class="order-item border-top">
+                {{#each this.OrderItems}}
+                <div>{{this.Food.name}} X {{this.quantity}}</div>
+                {{!-- <div>數量:</div> --}}
+                {{/each}}
+            </div>
+            {{!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's
+                content.</p> --}}
+            {{!-- <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a> --}}
+        </div>
+    </div>
+    {{/each}}
+
+
+
+</div>

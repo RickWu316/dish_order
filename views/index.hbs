@@ -14,7 +14,11 @@
 
 
 <div class="container mt-5">
-
+    {{#if id}}
+    <script>
+        window.alert(`取餐號碼:{{ id }}`)
+    </script>
+    {{/if}}
     <div class="row">
         {{!-- 左邊為菜單 --}}
         <div class="col-8 border">
