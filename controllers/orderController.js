@@ -6,12 +6,12 @@ const public = require('../public/javascript/main.js')
 const orderController = {
     postOrder: async (req, res) => {
         // const data = JSON.parse(req.body.orderItem)
-        const { orderItem, amount } = req.body
+        const { orderItem, amount, input } = req.body
         const order = await Orders.create({
 
             //後面要做表單
-            // name: "吳先生",
-            // phone: "test",
+            name: input.custName,
+            phone: input.custPhone,
             amount,
             status: "已接單"
         })
@@ -23,11 +23,7 @@ const orderController = {
                 quantity: orderItem[i].quantity,
             })
         }
-        // res.json({ success: 1 })
         res.send({ id: order.id })
-
-        // foodList = await public.getFoods()
-        // res.render("index", { foods: foodList, id: order.id })
     },
 
 }
