@@ -94,7 +94,7 @@ function addToOrder(target) {
         let totalAmount = `<div class="card-body pt-3 pr-3">
                 <div class="text-right">總共 ${amount} 元
                         </div></div>`
-        let sentValue = `<form action = "/order" method = "POST" id="usrform">
+        let sentValue = `<form action = "/orders" method = "POST" id="usrform">
                 <textarea name="orderItem" form="usrform" style="display:none">${data}</textarea>
                  <button class="btn btn-lg btn-primary btn-block" type="submit"> 送出</button>
 
@@ -126,7 +126,7 @@ function XHLSend(input) {
     oReq.upload.addEventListener("load", transferComplete);
     oReq.upload.addEventListener("error", transferFailed);
     oReq.upload.addEventListener("abort", transferCanceled);
-    oReq.open("POST", "/order", true);
+    oReq.open("POST", "/orders", true);
     oReq.setRequestHeader("Content-Type", "application/json");
 
     let data = JSON.stringify({ orderItem, amount, input })

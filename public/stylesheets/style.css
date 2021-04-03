@@ -4,3 +4,13 @@
   /* min-height: 600px; */
 }
 
+/* @media screen { font-size: 14px; }
+@media print { font-size: 28px; } */
+
+
+@media screen and (max-width: 768px) { 
+  img{ display: none }
+  .card-body {
+    padding: 0.5rem}
+
+}

@@ -4,7 +4,7 @@ const public = require('../public/javascript/main.js')
 const fs = require('fs')
 const imgur = require('imgur-node-api')
 const orderController = require('./orderController')
-const { nextTick } = require('process')
+// const { nextTick } = require('process')
 const moment = require('moment')
 const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
 
@@ -65,22 +65,28 @@ const adminController = {
 
     getOrders: async (req, res) => {
         // const status = req.query.status
-        let status = null
+        // let status = null
+        let orderList
         if (req.query.status) {
             status = req.query.status
-            console.log(status)
-        }
-        // if (!status) { status = 0 }
-        // console.log(status)
+            orderList = await Orders.findAll({
+                where: { status },
+                include: [{
+                    model: OrderItems,
+                    include: [Foods]
+                }],
+                order: ['createdAt'],
+            })
+        } else {
+            orderList = await Orders.findAll({
+                include: [{
+                    model: OrderItems,
+                    include: [Foods]
+                }],
+                order: ['createdAt'],
+            })
 
-        const orderList = await Orders.findAll({
-            where: { status },
-            include: [{
-                model: OrderItems,
-                include: [Foods]
-            }],
-            order: ['createdAt'],
-        })
+        }
         const orders = orderList.map(item => ({
             ...item.toJSON(),
             "createdTime": moment(item.dataValues.createdAt).format("YYYY-MM-DD HH:mm:ss"),

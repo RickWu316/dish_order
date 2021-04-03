@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div>
+        <form action="/orders">
+            <input type="text" name="phone" placeholder="請輸入電話號碼 ">
+            <button type="submit">提交</button>
+        </form>
+    </div>
+    {{#each orders}}
+    <div class="card m-2" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="card-title text-ce">單號:{{this.id}}</h5>
+            <h6 class="card-item">名稱:{{this.name}}</h6>
+            <h6 class="card-item">電話:{{this.phone}}</h6>
+            <h6 class="card-item">金額:${{this.amount}} 元</h6>
+            <h6 class="card-item">打單時間:{{this.createdTime}}</h6>
+            {{!-- <h6 class="card-item">修改時間:{{this.updatedTime}}</h6> --}}
+            <h6 class="card-item">狀態:{{this.status}}</h6>
+
+            <div class="order-item border-top">
+                {{#each this.OrderItems}}
+                <div>{{this.Food.name}} X {{this.quantity}}</div>
+                {{!-- <div>數量:</div> --}}
+                {{/each}}
+            </div>
+            {{!-- <div class="status d-flex justify-content-center">
+                <form action="/admin/orders/{{this.id}}?_method=PUT" method="POST">
+                    <button type=" submit" class="btn btn-outline-primary mr-1" name="status" value="已完成">已完成</button>
+                    <button class="btn btn-outline-primary mr-1" name="status" value="已結單">結單</button>
+                    <button class="btn btn-outline-primary mr-1" name="status" value="取消">取消</button>
+                </form>
+            </div> --}}
+        </div>
+    </div>
+    {{/each }}
+
+</div>

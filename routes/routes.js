@@ -21,7 +21,8 @@ router.get('/admin/orders', adminController.getOrders)
 
 
 // root
-router.post('/order', orderController.postOrder)
+router.post('/orders', orderController.postOrder)
+router.get('/orders', orderController.getOrders)
 router.get('/', foodController.getFoods)
 
 
