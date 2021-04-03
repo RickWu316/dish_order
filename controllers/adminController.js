@@ -65,7 +65,7 @@ const adminController = {
 
     getOrders: async (req, res) => {
         // const status = req.query.status
-        let status = 0
+        let status = null
         if (req.query.status) {
             status = req.query.status
             console.log(status)
