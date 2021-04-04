@@ -1,12 +1,3 @@
-{{!-- {{#if foods}}
-<script type="text/javascript" async>
-
-    console.log({{ foods }})
-
-</script>
-{{/if}} --}}
-
-
 <script type="text/javascript" async>
     let foodList = []
 
@@ -28,7 +19,7 @@
             <div class="modal-body">
                 <p>姓名：<input type="text" id="order_name"></p>
                 <p>電話：<input type="text" id="order_title"></p>
-                <div class="border-top">
+                <div class="border-top" id="orderList">
                     {{!-- <span>訂單內容</span>
                     <ul class="mb-0">
                         <li>滷味 X1
