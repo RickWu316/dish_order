@@ -16,15 +16,16 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/orders">查詢訂單</a>
+                    <a class="nav-link {{#if orderTag}}active{{/if}}" href="/orders">查詢訂單</a>
+                </li>
+                {{#ifEqual user.role "admin"}}
+                <li class="nav-item">
+                    <a class="nav-link {{#if adminFoodTag}}active{{/if}}" href="/admin/foods">商品管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/foods">商品管理</a>
+                    <a class="nav-link {{#if adminOrderTag}}active{{/if}}" href="/admin/orders">訂單管理</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/orders">訂單管理</a>
-                </li>
-
+                {{/ifEqual}}
                 {{!-- <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
@@ -33,18 +34,21 @@
                 </li> --}}
             </ul>
             <div>
-                {{#if user.isAdmin}}
-                <a href="/admin" style="color: white;margin-right: 10px;">Admin 後台</a>
-                {{/if}}
                 {{#if user}}
                 <span style="color: white;margin-right: 10px;">Hi, {{user.email}}</span>
-                <a href="/users/{{user.id}}" style="color: white;margin-right: 10px;">Profile</a>
+                {{!-- <a href="/users/{{user.id}}" style="color: white;margin-right: 10px;">Profile</a> --}}
                 <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0">LogOut</button></a>
+                {{else }}
+                <a href="/signin"><button class="btn btn-outline-success my-2 my-sm-0">LogIn</button></a>
                 {{/if}}
             </div>
+
         </div>
     </nav>
+    {{> message}}
+
     {{{ body }}}
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

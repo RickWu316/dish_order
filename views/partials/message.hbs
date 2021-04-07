@@ -1,0 +1,21 @@
+<div class="container">
+    {{#if success_messages}}
+    <div class="alert alert-success" role="alert" style="margin: 30px 0 ;">
+        {{success_messages}}
+    </div>
+    {{/if}}
+    {{#if error_messages}}
+    <div class="alert alert-danger" role="alert" style="margin: 30px 0 ;">
+        {{error_messages}}
+    </div>
+    {{/if}}
+
+    {{#if warning_messages}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ warning_messages }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+</div>

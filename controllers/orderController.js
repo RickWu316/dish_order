@@ -2,7 +2,7 @@ const { Foods, Orders, OrderItems } = require('../models')
 
 const public = require('../public/javascript/main.js')
 const moment = require('moment')
-const { Op } = require("sequelize")
+// const { Op } = require("sequelize")
 
 const orderController = {
     postOrder: async (req, res) => {
@@ -51,9 +51,7 @@ const orderController = {
             }))
 
         }
-
-        // console.log(orders)
-        res.render("orders", { orders })
+        res.render("orders", { orders, orderTag: "orderTag" })
 
     }
 

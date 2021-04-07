@@ -4,16 +4,16 @@ const public = require('../public/javascript/main.js')
 const fs = require('fs')
 const imgur = require('imgur-node-api')
 const orderController = require('./orderController')
-// const { nextTick } = require('process')
 const moment = require('moment')
 const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
+let navTag = []
 
 
 const adminController = {
     getFoods: async (req, res) => {
         foodList = await public.getFoods()
 
-        res.render("admin/foods", { foods: foodList })
+        res.render("admin/foods", { foods: foodList, adminFoodTag: "FoodTag" })
     },
     editFood: async (req, res) => {
         let id = req.params.id
@@ -92,8 +92,7 @@ const adminController = {
             "createdTime": moment(item.dataValues.createdAt).format("YYYY-MM-DD HH:mm:ss"),
             "updatedTime": moment(item.dataValues.updatedAt).format("YYYY-MM-DD HH:mm:ss")
         }))
-        // console.log(typeof orders[0].id)
-        res.render("admin/orders", { orders })
+        res.render("admin/orders", { orders, adminOrderTag: "orderTag" })
 
     },
     putOrder: async (req, res) => {

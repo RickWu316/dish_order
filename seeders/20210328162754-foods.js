@@ -9,6 +9,7 @@ module.exports = {
       name: faker.name.findName(),
       price: Math.floor(Math.random() * 100),
       description: faker.datatype.string(),
+      image: "https://picsum.photos/200",
       createdAt: new Date(),
       updatedAt: new Date()
 
