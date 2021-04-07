@@ -1,6 +1,4 @@
-const { Foods, Orders, OrderItems, Users } = require('../models')
 
-const public = require('../public/javascript/main.js')
 const bcrypt = require('bcryptjs')
 
 const userController = {
@@ -17,7 +15,6 @@ const userController = {
         req.flash('success_messages', '登出成功！')
         req.logout()
         res.redirect('/')
-        // res.redirect('/signin')
     },
 
     signUp: (req, res) => {

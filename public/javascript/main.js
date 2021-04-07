@@ -10,7 +10,6 @@ const public = {
 
         }).then(food => {
             let foodList = food
-
             return food
         }).catch(error => console.error(error))
 
