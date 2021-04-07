@@ -4,7 +4,6 @@ const modal = document.querySelector(".modal")
 let orderItem = []
 let amount = 0
 
-// console.log(foodList)
 
 leftDeck.addEventListener('click', event => {
     adjustQty(event.target)
@@ -52,6 +51,7 @@ function addToOrder(target) {
     if (target.innerText === '加入菜單') {
         selectFood = target.parentElement
         foodId = selectFood.children[0].id
+        foodListId = foodList.findIndex(item => item.id === foodId)
         qty = Number(selectFood.children[3].children[1].innerText)
         const targetOrderItem = orderItem.find(item => item.id === foodId)
 
@@ -62,9 +62,9 @@ function addToOrder(target) {
             // 沒按過 加入新資料
             orderItem.push({
                 //這邊之後要確認一下有沒有問題
-                id: foodList[foodId - 1].id,
-                name: foodList[foodId - 1].name, // name: name
-                price: foodList[foodId - 1].price, // price: price
+                id: foodList[foodListId].id,
+                name: foodList[foodListId].name, // name: name
+                price: foodList[foodListId].price, // price: price
                 quantity: qty
             })
 
