@@ -2,7 +2,7 @@ const leftDeck = document.querySelector(".card-deck")
 const rightOrder = document.querySelector("#order")
 const modal = document.querySelector(".modal")
 let orderItem = []
-let amount = 0
+let amount
 
 
 leftDeck.addEventListener('click', event => {
@@ -11,10 +11,8 @@ leftDeck.addEventListener('click', event => {
 })
 
 rightOrder.addEventListener('click', event => {
-
     deleteOrderCard(event.target)
-
-    // renderOrderData(event.target)
+    renderOrderData(event.target)
 
 })
 
@@ -76,7 +74,7 @@ function addToOrder(target) {
 
 
 function renderRightDeck() {
-    let amount = 0
+    amount = 0
     //計算總金額
     orderItem.forEach(item => {
         amount += item.price * item.quantity
@@ -170,7 +168,11 @@ function XHLSend(input) {
 }
 
 function renderOrderData(target) {
+    amount = 0
     const modalOrder = document.querySelector("#orderList")
+    orderItem.forEach(item => {
+        amount += item.price * item.quantity
+    })
     ItemList = orderItem.map(item => `
     <li>${item.name} X ${item.quantity}
     `)
