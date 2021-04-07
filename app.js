@@ -5,7 +5,6 @@ const exphbs = require('express-handlebars');
 // const router = express.Router()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-// const bcrypt = require('bcryptjs')
 const passport = require('./config/passport')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -16,7 +15,6 @@ if (process.env.NODE_ENV !== 'production') {
 const PORT = process.env.PORT
 
 
-
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers: require('./config/helpers') }))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,7 +22,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
